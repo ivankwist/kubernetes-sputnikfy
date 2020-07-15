@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statistics-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statistics-service
+  template:
+    metadata:
+      labels:
+        app: statistics-service
+    spec:
+      containers:
+      - name: statistics-service
+        image: statistics-service:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8080
+        env:
+        - name: DB_USER
+          value: "statistics-user"
+        - name: DB_PASS
+          value: "pass"
+        - name: DB_URL
+          value: "statistics-db"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_NAME
+          value: "statistics"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: statistics-service
+spec:
+  ports:
+  - nodePort: 30084
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: statistics-service
+  type: NodePort

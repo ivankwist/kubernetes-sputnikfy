@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queries-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: queries-service
+  template:
+    metadata:
+      labels:
+        app: queries-service
+    spec:
+      containers:
+      - name: queries-service
+        image: queries-service:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8080
+        env:
+          - name: MUSIC_ADDRESS
+            value: "music-service"
+          - name: MUSIC_PORT
+            value: "8080"
+          - name: STATISTICS_ADDRESS
+            value: "statistics-service"
+          - name: STATISTICS_PORT
+            value: "8080"
+          - name: USERS_ADDRESS
+            value: "users-service"
+          - name: USERS_PORT
+            value: "8080"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: queries-service
+spec:
+  ports:
+  - nodePort: 30081
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: queries-service
+  type: NodePort

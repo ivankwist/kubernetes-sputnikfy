@@ -1,0 +1,37 @@
+<agregado>
+    <usuario>160829b0-133b-475d-9841-41e833bea705</usuario>
+    <actividades>
+        <!-- el ambito de la actividad puede ser playlist, radio o álbum -->
+        <actividad>
+            <tipo>escucha</tipo>
+            <ambito>
+                <ambito_tipo>playlist</ambito_tipo>
+                <ambito_id>0841a0de-e2b1-496a-a72a-45b72371d49c</ambito_id>
+            </ambito>
+            <cancion>23859d1a-65ae-44a9-9ff3-ecdf9e728837</cancion>
+        </actividad>
+        <actividad>
+            <tipo>escucha</tipo>
+            <ambito>
+                <ambito_tipo>radio</ambito_tipo>
+                <ambito_id>a98cf4a0-8df8-4b17-9c04-a7e54565e16d</ambito_id>
+            </ambito>
+            <cancion>68656eb8-bed1-40f1-ba1b-9c8021217477</cancion>
+        </actividad>
+        <actividad>
+            <tipo>tweet</tipo>
+            <cancion>23859d1a-65ae-44a9-9ff3-ecdf9e728837</cancion>
+            <detail>El otro día leí en este antro que Estranged era el mejor tema de los Guns. Y no puedo estar más de acuerdo</detail>
+        </actividad>
+        <actividad>
+            <tipo>pulgar</tipo>
+            <!-- si el valor es 1, es un pulgar arriba, si el pulgar es -1 es un pulgar abajo -->
+            <valor>1</valor>
+            <!-- se puede dar opinión sobre canciones o albumes -->
+            <entidad>
+                <entidad_tipo>cancion</entidad_tipo>
+                <entidad_id>96531353-5a92-4d43-97e6-ec1844ebd017</entidad_id>
+            </entidad>
+        </actividad>
+    </actividades>
+</agregado>

@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: music-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: music-service
+  template:
+    metadata:
+      labels:
+        app: music-service
+    spec:
+      containers:
+      - name: music-service
+        image: music-service:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8080
+        env:
+        - name: DB_USER
+          value: "music-user"
+        - name: DB_PASS
+          value: "pass"
+        - name: DB_URL
+          value: "music-db"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_NAME
+          value: "music"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: music-service
+spec:
+  ports:
+  - nodePort: 30082
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: music-service
+  type: NodePort

@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sputnikfy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sputnikfy
+  template:
+    metadata:
+      labels:
+        app: sputnikfy
+    spec:
+      containers:
+      - name: sputnikfy
+        image: sputnikfy:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8080
+        env:
+          - name: RABBIT_URL
+            value: 'rabbit'
+          - name: RABBIT_PORT
+            value: '5672'
+          - name: RABBIT_USER
+            value: 'guest'
+          - name: RABBIT_PASS
+            value: 'guest'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sputnikfy
+spec:
+  ports:
+  - nodePort: 30080
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: sputnikfy
+  type: NodePort

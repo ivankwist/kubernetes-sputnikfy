@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: user-service:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8080
+        env:
+        - name: DB_USER
+          value: "users-user"
+        - name: DB_PASS
+          value: "pass"
+        - name: DB_URL
+          value: "users-db"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_NAME
+          value: "users"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  ports:
+  - nodePort: 30083
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: user-service
+  type: NodePort
