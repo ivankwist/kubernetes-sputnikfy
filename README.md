@@ -1,6 +1,6 @@
-# kubernetes-sputnikfy
+# Sputnikfy
 
-Trabajo Práctico de la materia Programación Distribuida II de la Universidad Nacional de Avellaneda.
+Despliegue en Kubernetes del Trabajo Práctico de la materia Programación Distribuida II de la Universidad Nacional de Avellaneda.
 
 
 ## Requisitos
@@ -92,19 +92,19 @@ Para ver la entidad más escuchada en un rango de fechas debemos proveer las fec
 /escuchas/cancion?fechaStart=2020-05-01&fechaEnd=2020-06-01
 ```
 
-#### Album
+##### Album
 
 ```
 /escuchas/album?fechaStart=2020-05-01&fechaEnd=2020-06-01
 ```
 
-#### Radio
+##### Radio
 
 ```
 /escuchas/radio?fechaStart=2020-05-01&fechaEnd=2020-07-01
 ```
 
-### Discos y Radios de Artista
+#### Discos y Radios de Artista
 
 Para ver los discos y radios de un artista debemos proveer el id del artista:
 
@@ -114,7 +114,7 @@ Para ver los discos y radios de un artista debemos proveer el id del artista:
 /artista/ambitos?artistaID=70523e4c-fdec-4f23-b555-25ccd5e69eb6
 ```
 
-### Canciones de un Disco
+#### Canciones de un Disco
 
 Para ver las canciones de un disco debemos proveer el id del disco:
 
@@ -124,11 +124,11 @@ Para ver las canciones de un disco debemos proveer el id del disco:
 /album/canciones?ambitoID=04a32389-930f-41d3-9d79-a62a0bfdc7c9
 ```
 
-### Escuchas de Entidades
+#### Escuchas de Entidades
 
 Para ver la cantidad de escuchas de cada entidad debemos proveer el id de la misma:
 
-#### Cancion
+##### Cancion
 
 * cancionID
 
@@ -136,7 +136,7 @@ Para ver la cantidad de escuchas de cada entidad debemos proveer el id de la mis
 /cancion/escuchas?cancionID=6b6f59fd-6646-426d-8b30-9e72eba85a9d
 ```
 
-#### Album
+##### Album
 
 * ambitoID
 
@@ -144,7 +144,7 @@ Para ver la cantidad de escuchas de cada entidad debemos proveer el id de la mis
 /album/escuchas?ambitoID=7e8fba26-d300-4e75-a13b-5053c994ea68
 ```
 
-### Datos de Usuario
+#### Datos de Usuario
 
 Para ver la información de un usuario debemos proveer el id del mismo:
 
@@ -154,7 +154,7 @@ Para ver la información de un usuario debemos proveer el id del mismo:
 /user?userID=160829b0-133b-475d-9841-41e833bea705
 ```
 
-### Discovery
+#### Discovery
 
 Para obtener un disco que no haya un escuchado de un artista que sí para un usuario debemos proveer el id del mismo:
 
