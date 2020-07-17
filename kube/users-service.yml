@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service
+  name: users-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-service
+      app: users-service
   template:
     metadata:
       labels:
-        app: user-service
+        app: users-service
     spec:
       containers:
-      - name: user-service
-        image: user-service:latest
+      - name: users-service
+        image: users-service:latest
         imagePullPolicy: Never
         ports:
           - containerPort: 8080
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: users-service
 spec:
   ports:
   - nodePort: 30083
     port: 8080
     targetPort: 8080
   selector:
-    app: user-service
+    app: users-service
   type: NodePort
