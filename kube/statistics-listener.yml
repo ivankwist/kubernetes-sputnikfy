@@ -46,12 +46,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: statistics-service
+  name: statistics-listener
 spec:
   ports:
   - nodePort: 30085
     port: 8080
     targetPort: 8080
   selector:
-    app: statistics-service
+    app: statistics-listener
   type: NodePort
